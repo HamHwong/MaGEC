@@ -1,0 +1,32 @@
+{
+  "name": "magec",
+  "version": "1.0.0",
+  "private":false,
+  "description": "MpandA html5 Game Engine based on Canvas",
+  "main": "./package/main.js",
+  "scripts": {
+    "serve": "webpack server  --config ./config/dev.config.js",
+    "build": "webpack  --config ./config/prod.config.js",
+    "build-test":"webpack  --config ./config/test.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HamHwong/MaGEC.git"
+  },
+  "author": "Ham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HamHwong/MaGEC/issues"
+  },
+  "homepage": "https://github.com/HamHwong/MaGEC#readme",
+  "devDependencies": {
+    "@webpack-cli/serve": "^1.5.1",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "html-webpack-plugin": "^5.3.2",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^5.45.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
