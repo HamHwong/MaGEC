@@ -10,8 +10,9 @@ module.exports = webpackMerge.merge(baseConfig,{
   output: {
     path: path.resolve(process.cwd(),"package"),
     filename: '[name].umd.js', 
-    library: "friendly",
-    libraryTarget: "umd"
+    library: "magec",
+    libraryTarget: "umd",
+    globalObject: 'this'
   }, 
   plugins: [ 
     new CleanWebpackPlugin ()

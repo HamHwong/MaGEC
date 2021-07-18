@@ -6,6 +6,13 @@ const path  = require('path')
 
 //使用
 module.exports = webpackMerge.merge(baseConfig,{  
+  output: {
+    path: path.resolve(process.cwd(),"package"),
+    filename: '[name].umd.js', 
+    library: "magec",
+    libraryTarget: "umd",
+    globalObject: 'this'
+  }, 
   plugins: [ 
     new CleanWebpackPlugin (),
   ],

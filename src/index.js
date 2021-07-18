@@ -6,13 +6,16 @@
  * @Description: In User Settings Edit
  * @FilePath: /MPANDA.STUDIO.HOMEPAGE/src/components/Game/lib/load.js
  */
-import {CanvasManager} from './CanvasManager'
+import { CanvasManager } from './CanvasManager'
+import { IMap } from './Sprints/Imodels/IMap'
+import { Instance } from './Sprints/lib/Instance'
+import { Player } from './Sprints/models/Player'
 
-const GamePadFactory = {
-    CanvasManager : null,
-    getCanvasManager:function(canvas){ 
-        if(!this.CanvasManager)this.CanvasManager = new CanvasManager(canvas) 
-        return this.CanvasManager
-    } 
+export const GamePadFactory = {
+  CanvasManager: null,
+  getCanvasManager: function (canvas) {
+    if (!this.CanvasManager) this.CanvasManager = new CanvasManager(canvas)
+    return this.CanvasManager
+  },
 }
-export default GamePadFactory
+export { Instance, Player, IMap }
