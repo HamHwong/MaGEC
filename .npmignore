@@ -13,8 +13,7 @@ node_modules/
 config.gypi
 *.orig
 package-lock.json
-template/
-examples/
+template/ 
 .vscode
 config/
 src/
