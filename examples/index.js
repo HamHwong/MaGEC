@@ -1,8 +1,7 @@
-import { GamePadFactory, Player, IMap } from '../package/main.umd.js'
+import { GamePadFactory, Player, IMap } from '../src/index'
 window.onload = async () => {
   let GameBoardCanvas = document.getElementById('canvas')
-  let GameManager = null
-  GameManager = GamePadFactory.getCanvasManager(GameBoardCanvas)
+  let GameManager = GamePadFactory.getCanvasManager(GameBoardCanvas)
   await GameManager.init({
     height: 300,
     width: 600,

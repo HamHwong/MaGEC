@@ -6,10 +6,11 @@
  * @Description: In User Settings Edit
  * @FilePath: \MPANDA.STUDIO.HOMEPAGE\src\components\Game\lib\assetsManager\index.js
  */
-import Status from './status.enums' 
+import Status from '@/Enums/AssetManager.Status.js' 
 import {
   init
 } from '../api/game'
+import ClientType from '../Emuns/ClientType'
 export class AssetsManager {
   constructor(CanvasManager) {
     this.loadQueue = []
@@ -24,7 +25,7 @@ export class AssetsManager {
     var _this = this 
     DBConnect.onsuccess = async (ev) => { 
       this.status = Status.CONNECTED 
-      _this.CanvasManager.preloadSprints()
+      this.CanvasManager.preloadSprints()
     }
     DBConnect.onupgradeneeded = async function (ev) {
       console.log('Upgraded!')
@@ -48,11 +49,16 @@ export class AssetsManager {
   }
   async download() { 
     this.status = Status.DOWNLOADING
-    await init().then(async res => { 
-      const {
-        data
-      } = res
-      debugger
+    let data = null
+    try{
+      if(this.CanvasManager.ClientType === ClientType.ONLINE){
+        {
+          let {data:Data} = await init()
+          data = Data
+        } 
+      }else{ 
+        require('/assets')
+      }
       this.setTableName('Frames') 
       var Data = data.Data
       for (var id in Data) {
@@ -62,8 +68,11 @@ export class AssetsManager {
         }
         await this.add(obj)
       } 
-    })
-    this.status = Status.CONNECTED
+    }catch(e){
+      console.log(e)
+    }finally{
+      this.status = Status.CONNECTED
+    }
   }
   open() {
     this.status = Status.CONNECTING

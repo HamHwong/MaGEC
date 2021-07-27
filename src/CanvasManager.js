@@ -24,6 +24,7 @@ import {
 import {
     IMap
 } from "./Sprints/Imodels/IMap";
+import ClientType from './Emuns/ClientType'
 export class CanvasManager {
     constructor(canvas) {
         this.canvas = canvas
@@ -50,10 +51,12 @@ export class CanvasManager {
         this.Camera = null
         this.MapManager = null
         this.PauseControls = false
+        this.ClientType = ClientType.OFFLINE
     }
     async init({
         width = document.documentElement.clientWidth,
         height = 500,
+        online = false,
         debug = false
     }) {
         this.Debug = debug
